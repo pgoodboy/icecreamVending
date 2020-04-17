@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <head>
-	<link href="position.css" type="text/css" rel="stylesheet">
+    <link href="position.css" type="text/css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>
          let outputIceCream = 
         {
@@ -11,16 +12,16 @@
             topping1: 0, // 0,1,2,3
             topping2: 0, // 0,1,2,3
             reset: function(){
-                this.type = 'none';
+                this.type = 'none'
                 this.flavor1 = 0
-                this.flavor2 = 0;
-                this.flavor3 = 0;
-                this.topping1 = 0;
-                this.topping2 = 0;
+                this.flavor2 = 0
+                this.flavor3 = 0
+                this.topping1 = 0
+                this.topping2 = 0
             }
         }
         // State Machine
-        let inputList = ['coin','cone','cup','F1','F2','F3','T1','T2','T3','fin','again']
+        let inputList = ['coin','cone','cup','F1','F2','F3','T1','T2','T3','take']
         let transitionList = 
         [
             {from: 0,to: 1,input: ['coin']},
@@ -32,18 +33,17 @@
             {from: 6,to: 5,input: ['F1','F2','F3']},
             {from: 5,to: 4,input: ['F1','F2','F3']},
             {from: 4,to: 7,input: ['F1','F2','F3']},
-            {from: 7,to: 10,input: ['fin']},
+            {from: 7,to: 0,input: ['take']},
             {from: 7,to: 8,input: ['T1','T2','T3']},
-            {from: 8,to: 10,input: ['fin']},
+            {from: 8,to: 0,input: ['take']},
             {from: 8,to: 9,input: ['coin']},
             {from: 9,to: 10,input: ['T1','T2','T3']},
-            {from: 9,to: 10,input: ['fin']},
-            {from: 10,to: 0,input: ['again']}
+            {from: 10,to: 0,input: ['take']},
         ];
         var currentState = 0;
         function onBtnClick(i) 
         {
-            transition(i);
+            transition(i)
         }
         function transition(input){
             for(let x of transitionList){
@@ -51,7 +51,7 @@
                     if(x.input.includes(input)){
                         // Update State
                         currentState = x.to;
-                        document.getElementById("stateImg").setAttribute("src","stateImg/"+currentState+".png");
+                        document.getElementById("stateImg").setAttribute("src","stateImg/"+currentState+".png")
                         // Update Output
                         switch(input) {
                             case 'cone':
@@ -66,18 +66,18 @@
                                 let flav = inputList.indexOf(input)-inputList.indexOf('F1')+1;
                                 if(outputIceCream.flavor2 != 0){
                                     outputIceCream.flavor3 = flav;
-                                    document.getElementById('flavor3').src = 'pic/flavor'+flav+'.png'
-                                    document.getElementById('flavor3').className = 'ice23'
+                                    document.getElementById('outflavor3').src = 'pic/flavor'+flav+'.png'
+                                    document.getElementById('outflavor3').className = 'ice23'
                                 }
                                 else if(outputIceCream.flavor1 != 0){
                                     outputIceCream.flavor2 = flav;
-                                    document.getElementById('flavor2').src = 'pic/flavor'+flav+'.png'
-                                    document.getElementById('flavor2').className = 'ice23'
+                                    document.getElementById('outflavor2').src = 'pic/flavor'+flav+'.png'
+                                    document.getElementById('outflavor2').className = 'ice23'
                                 }	
                                 else{
                                     outputIceCream.flavor1 = flav;
-                                    document.getElementById('flavor1').src = 'pic/flavor'+flav+'.png'
-                                    document.getElementById('flavor1').className = 'ice1'
+                                    document.getElementById('outflavor1').src = 'pic/flavor'+flav+'.png'
+                                    document.getElementById('outflavor1').className = 'ice1'
                                     }
                                 break;
                             case 'T1':
@@ -86,23 +86,27 @@
                                 let top = inputList.indexOf(input)-inputList.indexOf('T1')+1;
                                 if(outputIceCream.topping1 != 0){
                                     outputIceCream.topping2 = top;
-                                    document.getElementById('topping2').src = 'pic/topping'+top+'.png'
-                                    document.getElementById('topping2').className = 'topping2'
+                                    if(outputIceCream.topping1==outputIceCream.topping2){
+                                        document.getElementById('outtopping1').src = 'pic/topping'+top+top+'.png'
+                                    }else{
+                                        document.getElementById('outtopping2').src = 'pic/topping'+top+'.png'
+                                        document.getElementById('outtopping2').className = 'topping2'
+                                    }
                                 }
                                 else{
                                     outputIceCream.topping1 = top;
-                                    document.getElementById('topping1').src = 'pic/topping'+top+'.png'
-                                    document.getElementById('topping1').className = 'topping'
+                                    document.getElementById('outtopping1').src = 'pic/topping'+top+'.png'
+                                    document.getElementById('outtopping1').className = 'topping'
                                 }
                                 break;
-                            case 'again':
+                            case 'take':
                                 outputIceCream.reset();
                                 document.getElementById('type').className = 'disnone'
-                                document.getElementById('flavor1').className = 'disnone'
-                                document.getElementById('flavor2').className = 'disnone'
-                                document.getElementById('flavor3').className = 'disnone'
-                                document.getElementById('topping1').className = 'disnone'
-                                document.getElementById('topping2').className = 'disnone'
+                                document.getElementById('outflavor1').className = 'disnone'
+                                document.getElementById('outflavor2').className = 'disnone'
+                                document.getElementById('outflavor3').className = 'disnone'
+                                document.getElementById('outtopping1').className = 'disnone'
+                                document.getElementById('outtopping2').className = 'disnone'
                                 break;
                         }
                         break;
@@ -110,31 +114,166 @@
                 }
             }
         }
+
+        // Button Disable
+        $(function() {
+            $('#coin1').click(function() {
+                $("#cup").prop('disabled', false)
+                $("#cone").prop('disabled', false)
+                $('#counter').html(function(i, counter) {
+                    var counter;
+                    if(counter < 3){
+                        if(counter == 2){
+                            $("#coin1").prop('disabled', true)
+                        }
+                        return counter * 1 + 1;
+                    }
+                });
+            });
+        });
+
+        $(function() {
+            $('#reset').click(function() {
+                $('#coin1').show();
+                $('#coin2').hide();
+                $("#coin1").prop('disabled', false)
+                $("#coin2").prop('disabled', false)
+                $("#flavour1").prop('disabled', true)
+                $("#flavour2").prop('disabled', true)
+                $("#flavour3").prop('disabled', true)
+                $("#topping1").prop('disabled', true)
+                $("#topping2").prop('disabled', true)
+                $("#topping3").prop('disabled', true)
+                $("#cup").prop('disabled', true)
+                $("#cone").prop('disabled', true)
+                $("#reset").prop('disabled', true)
+                $("#cone").addClass("default");
+                $("#cup").addClass("default");
+                $('#counter').html(function(i, counter) {
+                    if(counter != 0){
+                        return counter = 0;
+                    }
+                });
+            });
+        });
+
+        $(function() {
+            $('#coin2').click(function() {
+            $('#counter').html(function(i, counter) {
+                    if(counter < 1){
+                        $("#coin2").prop('disabled', true)
+                        $("#topping1").prop('disabled', false)
+                        $("#topping2").prop('disabled', false)
+                        $("#topping3").prop('disabled', false)
+                        return counter * 1 + 1;
+                    }
+                });
+            });
+        });
+
+        $(function () {
+            $("#flavour1,#flavour2,#flavour3").click(function () {
+                $("#cup").prop('disabled', true)
+                $("#cone").prop('disabled', true)
+                $('#counter').html(function(i, counter) {
+                    if (counter > 1) {
+                        return counter * 1 - 1;
+                    }
+                    else if(counter == 1){
+                        $("#flavour1").prop('disabled', true)
+                        $("#flavour2").prop('disabled', true)
+                        $("#flavour3").prop('disabled', true)
+                        $("#topping1").prop('disabled', false)
+                        $("#topping2").prop('disabled', false)
+                        $("#topping3").prop('disabled', false)
+                        $("#reset").prop('disabled', false)
+                        return counter * 1 - 1;
+                    }
+                });
+            });
+        });
+
+        $(function () {
+            $("#topping1,#topping2,#topping3").click(function () {
+                $("#topping1").prop('disabled', true)
+                $("#topping2").prop('disabled', true)
+                $("#topping3").prop('disabled', true)
+                $('#coin2').show();
+                $('#coin1').hide();
+                $('#counter').html(function(i, counter) {
+                    var counter;
+                    if(counter>0){
+                        return counter * 1 - 1;
+                    }
+                    return counter
+                });
+            });
+        });
+
+        $(function () {
+            $("#cone").click(function() {
+                $("#cup").prop('disabled', true);
+                $("#cone").prop('disabled', true);
+                $("#cup").addClass("inactive");
+                $("#cone").addClass("active");
+                $("#coin1").prop('disabled', true)
+                $("#flavour1").prop('disabled', false)
+                $("#flavour2").prop('disabled', false)
+                $("#flavour3").prop('disabled', false)
+            });
+        });
+
+        $(function () {
+            $("#cup").click(function() {
+                $("#cup").prop('disabled', true);
+                $("#cone").prop('disabled', true);
+                $("#cone").addClass("inactive");
+                $("#cup").addClass("active");
+                $("#coin1").prop('disabled', true)
+                $("#flavour1").prop('disabled', false)
+                $("#flavour2").prop('disabled', false)
+                $("#flavour3").prop('disabled', false)
+            });
+        });
     </script>
     <title>ICE CREAM VENDING MACHINE</title>
 </head>
 
 <body>
-    <button type="button" onclick="onBtnClick('coin')">Coin</button><br>
-    <button type="button" onclick="onBtnClick('cone')">Cone</button>
-    <button type="button" onclick="onBtnClick('cup')">Cup</button><br>
-    <button type="button" onclick="onBtnClick('F1')">F1</button>
-    <button type="button" onclick="onBtnClick('F2')">F2</button>
-    <button type="button" onclick="onBtnClick('F3')">F3</button><br>
-    <button type="button" onclick="onBtnClick('T1')">T1</button>
-    <button type="button" onclick="onBtnClick('T2')">T2</button>
-    <button type="button" onclick="onBtnClick('T3')">T3</button><br>
-    <button type="button" onclick="onBtnClick('fin')">Fin</button><br>
-    <button type="button" onclick="onBtnClick('again')">Buy Again</button>
+    <h1>Input</h1>
+    <div id="counter">0</div>
+    <button type="button" id="coin1" onclick="onBtnClick('coin')">Coin</button>
+    <button type="button" id="coin2" onclick="onBtnClick('coin')">Coin</button><br>
+    <button type="button" id="cone" onclick="onBtnClick('cone')">Cone</button>
+    <button type="button" id="cup" onclick="onBtnClick('cup')">Cup</button><br>
+    <button type="button" id="flavour1" onclick="onBtnClick('F1')">F1</button>
+    <button type="button" id="flavour2" onclick="onBtnClick('F2')">F2</button>
+    <button type="button" id="flavour3" onclick="onBtnClick('F3')">F3</button><br>
+    <button type="button" id="topping1" onclick="onBtnClick('T1')">T1</button>
+    <button type="button" id="topping2" onclick="onBtnClick('T2')">T2</button>
+    <button type="button" id="topping3" onclick="onBtnClick('T3')">T3</button><br>
+    <button type="button" id="reset" onclick="onBtnClick('take')">TakeIceCream</button>
     <h1>State Machine Picture</h1>
     <img id="stateImg" src="stateImg/0.png">
     <h1>Output Picture</h1>
 	<div class='flex-container'>
         <img id='type' src='' class='disnone'>
-        <img id='flavor1' src='' class='disnone'>
-        <img id='flavor2' src='' class='disnone'>
-        <img id='flavor3' src='' class='disnone'>
-        <img id='topping1' src='' class='disnone'>
-        <img id='topping2' src='' class='disnone'>
+        <img id='outflavor1' src='' class='disnone'>
+        <img id='outflavor2' src='' class='disnone'>
+        <img id='outflavor3' src='' class='disnone'>
+        <img id='outtopping1' src='' class='disnone'>
+        <img id='outtopping2' src='' class='disnone'>
     </div>
 </body>
+<script>
+    $('#coin2').hide()
+    $("#flavour1").prop('disabled', true)
+    $("#flavour2").prop('disabled', true)
+    $("#flavour3").prop('disabled', true)
+    $("#topping1").prop('disabled', true)
+    $("#topping2").prop('disabled', true)
+    $("#topping3").prop('disabled', true)
+    $("#cup").prop('disabled', true)
+    $("#cone").prop('disabled', true)
+    $("#reset").prop('disabled', true)
+</script>
