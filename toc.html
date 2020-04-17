@@ -162,6 +162,7 @@
             $('#counter').html(function(i, counter) {
                     if(counter < 1){
                         $("#coin2").prop('disabled', true)
+                        $("#reset").prop('disabled', true)
                         $("#topping1").prop('disabled', false)
                         $("#topping2").prop('disabled', false)
                         $("#topping3").prop('disabled', false)
@@ -195,6 +196,7 @@
 
         $(function () {
             $("#topping1,#topping2,#topping3").click(function () {
+                $("#reset").prop('disabled', false)
                 $("#topping1").prop('disabled', true)
                 $("#topping2").prop('disabled', true)
                 $("#topping3").prop('disabled', true)
