@@ -1,9 +1,118 @@
 <!DOCTYPE html>
-<html>
 <head>
 	<link href="position.css" type="text/css" rel="stylesheet">
-
-<title>ICE CREAM VENDING MACHINE</title>
+    <script>
+         let outputIceCream = 
+        {
+            type: 'none', // 'cone','cup','none'
+            flavor1: 0, // 0 = ไม่มี,1,2,3
+            flavor2: 0, // 0,1,2,3
+            flavor3: 0, // 0,1,2,3
+            topping1: 0, // 0,1,2,3
+            topping2: 0, // 0,1,2,3
+            reset: function(){
+                this.type = 'none';
+                this.flavor1 = 0
+                this.flavor2 = 0;
+                this.flavor3 = 0;
+                this.topping1 = 0;
+                this.topping2 = 0;
+            }
+        }
+        // State Machine
+        let inputList = ['coin','cone','cup','F1','F2','F3','T1','T2','T3','fin','again']
+        let transitionList = 
+        [
+            {from: 0,to: 1,input: ['coin']},
+            {from: 1,to: 2,input: ['coin']},
+            {from: 2,to: 3,input: ['coin']},
+            {from: 1,to: 4,input: ['cone','cup']},
+            {from: 2,to: 5,input: ['cone','cup']},
+            {from: 3,to: 6,input: ['cone','cup']},
+            {from: 6,to: 5,input: ['F1','F2','F3']},
+            {from: 5,to: 4,input: ['F1','F2','F3']},
+            {from: 4,to: 7,input: ['F1','F2','F3']},
+            {from: 7,to: 10,input: ['fin']},
+            {from: 7,to: 8,input: ['T1','T2','T3']},
+            {from: 8,to: 10,input: ['fin']},
+            {from: 8,to: 9,input: ['coin']},
+            {from: 9,to: 10,input: ['T1','T2','T3']},
+            {from: 9,to: 10,input: ['fin']},
+            {from: 10,to: 0,input: ['again']}
+        ];
+        var currentState = 0;
+        function onBtnClick(i) 
+        {
+            transition(i);
+        }
+        function transition(input){
+            for(let x of transitionList){
+                if(x.from==currentState){
+                    if(x.input.includes(input)){
+                        // Update State
+                        currentState = x.to;
+                        document.getElementById("stateImg").setAttribute("src","stateImg/"+currentState+".png");
+                        // Update Output
+                        switch(input) {
+                            case 'cone':
+                            case 'cup':
+                                outputIceCream.type = input;
+                                document.getElementById('type').src = 'pic/'+input+'.png'
+                                document.getElementById('type').className = 'cone'
+                                break;
+                            case 'F1':
+                            case 'F2':
+                            case 'F3':
+                                let flav = inputList.indexOf(input)-inputList.indexOf('F1')+1;
+                                if(outputIceCream.flavor2 != 0){
+                                    outputIceCream.flavor3 = flav;
+                                    document.getElementById('flavor3').src = 'pic/flavor'+flav+'.png'
+                                    document.getElementById('flavor3').className = 'ice23'
+                                }
+                                else if(outputIceCream.flavor1 != 0){
+                                    outputIceCream.flavor2 = flav;
+                                    document.getElementById('flavor2').src = 'pic/flavor'+flav+'.png'
+                                    document.getElementById('flavor2').className = 'ice23'
+                                }	
+                                else{
+                                    outputIceCream.flavor1 = flav;
+                                    document.getElementById('flavor1').src = 'pic/flavor'+flav+'.png'
+                                    document.getElementById('flavor1').className = 'ice1'
+                                    }
+                                break;
+                            case 'T1':
+                            case 'T2':
+                            case 'T3':
+                                let top = inputList.indexOf(input)-inputList.indexOf('T1')+1;
+                                if(outputIceCream.topping1 != 0){
+                                    outputIceCream.topping2 = top;
+                                    document.getElementById('topping2').src = 'pic/topping'+top+'.png'
+                                    document.getElementById('topping2').className = 'topping'
+                                }
+                                else{
+                                    outputIceCream.topping1 = top;
+                                    document.getElementById('topping1').src = 'pic/topping'+top+'.png'
+                                    document.getElementById('topping1').className = 'topping'
+                                }
+                                break;
+                            case 'again':
+                                outputIceCream.reset();
+                                document.getElementById('type').className = 'disnone'
+                                document.getElementById('flavor1').className = 'disnone'
+                                document.getElementById('flavor2').className = 'disnone'
+                                document.getElementById('flavor3').className = 'disnone'
+                                document.getElementById('topping1').className = 'disnone'
+                                document.getElementById('topping2').className = 'disnone'
+                                break;
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+    </script>
+    <title>ICE CREAM VENDING MACHINE</title>
+</head>
 
 <body>
     <button type="button" onclick="onBtnClick('coin')">Coin</button><br>
@@ -17,135 +126,16 @@
     <button type="button" onclick="onBtnClick('T3')">T3</button><br>
     <button type="button" onclick="onBtnClick('fin')">Fin</button><br>
     <button type="button" onclick="onBtnClick('again')">Buy Again</button>
-    <h1>State Machine Data</h1>
-    <p>Last Input : <span id = "lastInput">-</span><br>
-    State : <span id = "state">0</span><br>
-    Output : <span id = "output">-</span>
-    </p>
     <h1>State Machine Picture</h1>
     <img id="stateImg" src="stateImg/0.png">
+    <h1>State Machine Picture</h1>
 	<div class='flex-container'>
-            <img id='type' src='' class='cone'>
-            <img id='flavor1' src='' class='ice1'>
-            <img id='flavor2' src='' class='ice23'>
-            <img id='flavor3' src='' class='ice23'>
-            <img id='topping1' src='' class='topping'>
-			<img id='topping2' src='' class='topping2'>
-			
+        <img id='type' src='' class='cone'>
+        <img id='flavor1' src='' class='ice1'>
+        <img id='flavor2' src='' class='ice23'>
+        <img id='flavor3' src='' class='ice23'>
+        <img id='topping1' src='' class='topping'>
+        <img id='topping2' src='' class='topping2'>
     </div>
-<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/DABAFBD5-6984-EB4B-BA1E-9723D064ED06/main.js" charset="UTF-8"></script></head>
-<script>
-    // State Machine
-    let outputIceCream = 
-    {
-        type: 'none', // 'cone','cup','none'
-        flavor1: 0, // 0 = ไม่มี,1,2,3
-        flavor2: 0, // 0,1,2,3
-        flavor3: 0, // 0,1,2,3
-        topping1: 0, // 0,1,2,3
-        topping2: 0, // 0,1,2,3
-        reset: function(){
-            this.type = 'none';
-            this.flavor1 = 0
-            this.flavor2 = 0;
-            this.flavor3 = 0;
-            this.topping1 = 0;
-            this.topping2 = 0;
-        }
-    }
-    let inputList = ['coin','cone','cup','F1','F2','F3','T1','T2','T3','fin','again']
-    let transitionList = 
-    [
-        {from: 0,to: 1,input: ['coin']},
-        {from: 1,to: 2,input: ['coin']},
-        {from: 2,to: 3,input: ['coin']},
-        {from: 1,to: 4,input: ['cone','cup']},
-        {from: 2,to: 5,input: ['cone','cup']},
-        {from: 3,to: 6,input: ['cone','cup']},
-        {from: 6,to: 5,input: ['F1','F2','F3']},
-        {from: 5,to: 4,input: ['F1','F2','F3']},
-        {from: 4,to: 7,input: ['F1','F2','F3']},
-        {from: 7,to: 10,input: ['fin']},
-        {from: 7,to: 8,input: ['T1','T2','T3']},
-        {from: 8,to: 10,input: ['fin']},
-        {from: 8,to: 9,input: ['coin']},
-        {from: 9,to: 10,input: ['T1','T2','T3']},
-        {from: 9,to: 10,input: ['fin']},
-        {from: 10,to: 0,input: ['again']}
-    ];
-    let currentState = 0;
-    function onBtnClick(i) 
-    {
-        document.getElementById("lastInput").innerHTML = i; // Delete This
-        transition(i);
-    }
-    function transition(input){
-        for(let x of transitionList){
-            if(x.from==currentState){
-                if(x.input.includes(input)){
-                    // Update State
-                    currentState = x.to;
-                    document.getElementById("state").innerHTML = currentState.toString(); // Delete This
-                    document.getElementById("stateImg").setAttribute("src","stateImg/"+currentState+".png");// Update Output
-                    switch(input) {
-                        case 'cone':
-                        case 'cup':
-                            outputIceCream.type = input;
-							document.getElementById('type').src = 'pic/'+input+'.png'
-							document.getElementById('type').className = 'cone'
-                            break;
-                        case 'F1':
-                        case 'F2':
-                        case 'F3':
-                            let flav = inputList.indexOf(input)-inputList.indexOf('F1')+1;
-                            if(outputIceCream.flavor2 != 0){
-                                outputIceCream.flavor3 = flav;
-								document.getElementById('flavor3').src = 'pic/flavor'+flav+'.png'
-								document.getElementById('flavor3').className = 'ice23'
-							}
-                            else if(outputIceCream.flavor1 != 0){
-                                outputIceCream.flavor2 = flav;
-								document.getElementById('flavor2').src = 'pic/flavor'+flav+'.png'
-								document.getElementById('flavor2').className = 'ice23'
-							}	
-                            else{
-                                outputIceCream.flavor1 = flav;
-								document.getElementById('flavor1').src = 'pic/flavor'+flav+'.png'
-								document.getElementById('flavor1').className = 'ice1'
-								}
-                            break;
-                        case 'T1':
-                        case 'T2':
-                        case 'T3':
-                            let top = inputList.indexOf(input)-inputList.indexOf('T1')+1;
-                            if(outputIceCream.topping1 != 0){
-                                outputIceCream.topping2 = top;
-								document.getElementById('topping2').src = 'pic/topping'+top+'.png'
-								document.getElementById('topping2').className = 'topping'
-							}
-                            else{
-                                outputIceCream.topping1 = top;
-								document.getElementById('topping1').src = 'pic/topping'+top+'.png'
-								document.getElementById('topping1').className = 'topping'
-							}
-                            break;
-                        case 'again':
-                            outputIceCream.reset();
-							document.getElementById('type').className = 'disnone'
-							document.getElementById('flavor1').className = 'disnone'
-							document.getElementById('flavor2').className = 'disnone'
-							document.getElementById('flavor3').className = 'disnone'
-							document.getElementById('topping1').className = 'disnone'
-							document.getElementById('topping2').className = 'disnone'
-                            break;
-                    }
-                    document.getElementById("output").innerHTML = JSON.stringify(outputIceCream); // Delete This
-                    break;
-                }
-            }
-        }
-    }
-</script>
-
-
+<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/DABAFBD5-6984-EB4B-BA1E-9723D064ED06/main.js" charset="UTF-8"></script>
 </body>
