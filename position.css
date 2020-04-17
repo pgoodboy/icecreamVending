@@ -1,0 +1,36 @@
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column-reverse;
+    margin-top: 50px;
+    padding: 0;
+}
+
+.cone{
+    width: 49px;
+    height: 71px;
+    margin-left: 3px;
+}
+
+.ice1{
+    width: 55px;
+    height: 53px;
+    margin-bottom: -12px;
+}
+
+.ice23{
+    width: 55px;
+    height: 53px;
+    margin-bottom: -25px;
+}
+
+.topping{
+    width: 60px;
+    height: auto;
+    margin-bottom: -10px;
+    margin-left: -3px;
+}
+
+.disnone{
+    display: none;
+}
