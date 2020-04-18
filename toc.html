@@ -242,29 +242,35 @@
 </head>
 
 <body>
-    <h1>Input</h1>
-    <div id="counter">0</div>
-    <button type="button" id="coin1" onclick="onBtnClick('coin')">Coin</button>
-    <button type="button" id="coin2" onclick="onBtnClick('coin')">Coin</button><br>
-    <button type="button" id="cone" onclick="onBtnClick('cone')">Cone</button>
-    <button type="button" id="cup" onclick="onBtnClick('cup')">Cup</button><br>
-    <button type="button" id="flavour1" onclick="onBtnClick('F1')">F1</button>
-    <button type="button" id="flavour2" onclick="onBtnClick('F2')">F2</button>
-    <button type="button" id="flavour3" onclick="onBtnClick('F3')">F3</button><br>
-    <button type="button" id="topping1" onclick="onBtnClick('T1')">T1</button>
-    <button type="button" id="topping2" onclick="onBtnClick('T2')">T2</button>
-    <button type="button" id="topping3" onclick="onBtnClick('T3')">T3</button><br>
-    <button type="button" id="reset" onclick="onBtnClick('take')">TakeIceCream</button>
-    <h1>State Machine Picture</h1>
-    <img id="stateImg" src="stateImg/0.png">
-    <h1>Output Picture</h1>
-	<div class='flex-container'>
-        <img id='type' src='' class='disnone'>
-        <img id='outflavor1' src='' class='disnone'>
-        <img id='outflavor2' src='' class='disnone'>
-        <img id='outflavor3' src='' class='disnone'>
-        <img id='outtopping1' src='' class='disnone'>
-        <img id='outtopping2' src='' class='disnone'>
+    <div class="grid-container">
+        <div id="TotalCoin" class="itemcoin"> TOTAL COIN : 
+            <div id="counter">0</div>
+        </div>
+        <div class="itemInput">
+            <button type="button" id="coin1" onclick="onBtnClick('coin')"></button>
+            <button type="button" id="coin2" onclick="onBtnClick('coin')"></button><br>
+            <button type="button" id="cone" onclick="onBtnClick('cone')"></button>
+            <button type="button" id="cup" onclick="onBtnClick('cup')"></button><br>
+            <button type="button" id="flavour1" onclick="onBtnClick('F1')"></button>
+            <button type="button" id="flavour2" onclick="onBtnClick('F2')"></button>
+            <button type="button" id="flavour3" onclick="onBtnClick('F3')"></button><br>
+            <button type="button" id="topping1" onclick="onBtnClick('T1')"></button>
+            <button type="button" id="topping2" onclick="onBtnClick('T2')"></button>
+            <button type="button" id="topping3" onclick="onBtnClick('T3')"></button><br>
+            <button type="button" id="reset" onclick="onBtnClick('take')"></button>
+        </div>
+        <img id="stateImg" src="stateImg/0.png" class="itemstate">
+        <!-- <div class="itemShow"> -->
+            <div class='itemShow'>
+                <img id='type' src='' class='disnone'>
+                <img id='outflavor1' src='' class='disnone'>
+                <img id='outflavor2' src='' class='disnone'>
+                <img id='outflavor3' src='' class='disnone'>
+                <img id='outtopping1' src='' class='disnone'>
+                <img id='outtopping2' src='' class='disnone'>
+            </div>
+        <!-- </div> -->
+
     </div>
 </body>
 <script>
