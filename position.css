@@ -46,7 +46,6 @@ body {
 }
 
 .topping2{ 
-    /* ให้มันทับกับ topping1 พอดี */
     width: 60px;
     height: auto;
     margin-bottom: -60px;
@@ -58,10 +57,10 @@ body {
 }
 
 #stateImg {
-    width: 70%;
+    max-width: 100%;
     height: auto;
     display: block;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 #TotalCoin{
