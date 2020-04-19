@@ -55,26 +55,14 @@ body {
     display: none;
 }
 
-.grid-container {
-    display: grid;
-    grid-template-columns: 30% 70%;
-    grid-template-rows: auto;
-    grid-template-areas:
-        "coin ."
-        "showice state"
-        "inputice state";
-    /* background-color: #e69a8dff; */
-    grid-gap: 20px;
-}
-
 .itemInput {
-    grid-area: inputice;
-    place-self: center;
+    position:relative;
+    display:block;
+    margin-left: 50%;
+    margin-bottom: 0;
 }
 
 .itemShow {
-    grid-area: showice;
-    place-self: center;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column-reverse;
