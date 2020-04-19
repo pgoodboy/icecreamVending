@@ -14,6 +14,8 @@ html {
 body {
     background-image: url("pic/bg.jpg");
     background-color: #e69a8dff;
+    background-repeat: no-repeat;
+    background-size: cover;
     margin: 0px;
     height: 100%;
 }
