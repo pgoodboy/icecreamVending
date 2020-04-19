@@ -7,8 +7,6 @@
     height: 300px
 }
 
-<<<<<<< Updated upstream
-=======
 html {
     height: 100%;
 }
@@ -19,7 +17,6 @@ body {
     background-color: #e69a8dff;
 }
 
->>>>>>> Stashed changes
 .cone{
     width: 71px;
     height: 71px;
@@ -56,8 +53,6 @@ body {
 
 .disnone{
     display: none;
-<<<<<<< Updated upstream
-=======
 }
 
 .grid-container {
@@ -249,5 +244,4 @@ body {
 
 #reset:disabled {
     opacity: 0.5;
->>>>>>> Stashed changes
 }
