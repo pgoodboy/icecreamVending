@@ -2,7 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: column-reverse;
-    margin-top: 50px;
+    margin-bottom: 60px;
     padding: 0;
     height: 300px
 }
@@ -12,9 +12,10 @@ html {
 }
 
 body {
+    background-image: url("pic/bg.jpg");
+    background-color: #e69a8dff;
     margin: 0px;
     height: 100%;
-    background-color: #e69a8dff;
 }
 
 .cone{
@@ -26,7 +27,7 @@ body {
 .ice1{
     width: 55px;
     height: 53px;
-    margin-bottom: -9px;
+    margin-bottom: -12px;
     margin-left: 11px;
 }
 
@@ -34,13 +35,14 @@ body {
     width: 55px;
     height: 53px;
     margin-bottom: -25px;
+    margin-left: 11px;
 }
 
 .topping{
     width: 60px;
     height: auto;
-    margin-bottom: -25px;
-    margin-left: -3px;
+    margin-bottom: -28px;
+    margin-left: 9px;
 }
 
 .topping2{ 
@@ -48,41 +50,15 @@ body {
     width: 60px;
     height: auto;
     margin-bottom: -60px;
-    margin-left: -3px;
+    margin-left: 9px;
 }
 
 .disnone{
     display: none;
 }
 
-.itemInput {
-    position:relative;
-    display:block;
-    margin-left: 50%;
-    margin-bottom: 0;
-}
-
-.itemShow {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column-reverse;
-    margin-bottom: 60px;
-    padding: 0;
-    height: 300px;
-}
-
-.itemstate {
-    grid-area: state;
-    place-self: center;
-}
-
-.itemcoin {
-    grid-area: coin;
-    place-self: center;
-}
-
 #stateImg {
-    width: 60%;
+    width: 70%;
     height: auto;
     display: block;
     object-fit: cover;
@@ -91,15 +67,15 @@ body {
 #TotalCoin{
     font-size: 30px;
     position : relative;
-    top : 0;
-    left : 0;
+    top : 0px;
+    left : 0px;
 }
 
 #counter{
     font-size: 30px;
-    position: absolute;
-    top : 0;
-    left : 200px;
+    position: relative;
+    top : 0px;
+    left : 0px;
 }
 
 #coin1 { 
