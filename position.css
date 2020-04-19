@@ -7,6 +7,19 @@
     height: 300px
 }
 
+<<<<<<< Updated upstream
+=======
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0px;
+    height: 100%;
+    background-color: #e69a8dff;
+}
+
+>>>>>>> Stashed changes
 .cone{
     width: 71px;
     height: 71px;
@@ -43,4 +56,198 @@
 
 .disnone{
     display: none;
+<<<<<<< Updated upstream
+=======
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    grid-template-rows: auto;
+    grid-template-areas:
+        "coin ."
+        "showice state"
+        "inputice state";
+    /* background-color: #e69a8dff; */
+    grid-gap: 20px;
+}
+
+.itemInput {
+    grid-area: inputice;
+    place-self: center;
+}
+
+.itemShow {
+    grid-area: showice;
+    place-self: center;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column-reverse;
+    margin-bottom: 60px;
+    padding: 0;
+    height: 300px;
+}
+
+.itemstate {
+    grid-area: state;
+    place-self: center;
+}
+
+.itemcoin {
+    grid-area: coin;
+    place-self: center;
+}
+
+#stateImg {
+    width: 60%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+#TotalCoin{
+    font-size: 30px;
+    position : relative;
+    top : 0;
+    left : 0;
+}
+
+#counter{
+    font-size: 30px;
+    position: absolute;
+    top : 0;
+    left : 200px;
+}
+
+#coin1 { 
+    background-image: url("pic/coinBtn.png"); 
+    background-size: cover; 
+    border-radius: 50%;
+    width: 70px; 
+    height: 70px; 
+} 
+
+#coin1:disabled { 
+    opacity: 0.5;
+} 
+
+#coin2 { 
+    background-image: url("pic/coinBtn.png"); 
+    background-size: cover; 
+    border-radius: 50%;
+    width: 70px; 
+    height: 70px; 
+} 
+
+#coin2:disabled { 
+    opacity: 0.5;
+} 
+
+#cone { 
+    background-image: url("pic/coneBtn.png"); 
+    background-size: cover; 
+    border-radius: 50%;
+    width: 70px; 
+    height: 70px; 
+} 
+
+#cone:disabled { 
+    opacity: 0.5;
+} 
+
+#cup { 
+    background-image: url("pic/cupBtn.png"); 
+    background-size: cover; 
+    border-radius: 50%;
+    width: 70px; 
+    height: 70px; 
+} 
+
+#cup:disabled {  
+    opacity: 0.5;
+} 
+
+#flavour1 { 
+    background-image: url("pic/flavor1Btn.png"); 
+    background-size: cover; 
+    border-radius: 50%;
+    width: 70px; 
+    height: 70px; 
+} 
+
+#flavour1:disabled { 
+    opacity: 0.5;
+} 
+
+#flavour2 { 
+    background-image: url("pic/flavor2Btn.png"); 
+    background-size: cover; 
+    border-radius: 50%;
+    width: 70px; 
+    height: 70px; 
+} 
+
+#flavour2:disabled {  
+    opacity: 0.5;
+} 
+
+#flavour3 { 
+    background-image: url("pic/flavor3Btn.png"); 
+    background-size: cover; 
+    border-radius: 50%;
+    width: 70px; 
+    height: 70px; 
+} 
+
+#flavour3:disabled { 
+    opacity: 0.5;
+} 
+
+#topping1 { 
+    background-image: url("pic/top1Btn.png"); 
+    background-size: cover; 
+    border-radius: 50%;
+    width: 70px; 
+    height: 70px; 
+} 
+
+#topping1:disabled { 
+    opacity: 0.5;
+} 
+
+#topping2 { 
+    background-image: url("pic/top2Btn.png"); 
+    background-size: cover; 
+    border-radius: 50%;
+    width: 70px; 
+    height: 70px; 
+} 
+
+#topping2:disabled { 
+    opacity: 0.5;
+} 
+
+#topping3 { 
+    background-image: url("pic/top3Btn.png"); 
+    background-size: cover; 
+    border-radius: 50%;
+    width: 70px; 
+    height: 70px; 
+} 
+
+#topping3:disabled { 
+    opacity: 0.5;
+} 
+
+#reset {
+    background-image: url("pic/takeitembtn.png"); 
+    background-size: cover; 
+    border-radius: 10px;
+    width: 218px; 
+    height: 50px;
+}
+
+#reset:disabled {
+    opacity: 0.5;
+>>>>>>> Stashed changes
 }
