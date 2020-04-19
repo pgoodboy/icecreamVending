@@ -115,6 +115,7 @@
             }
         }
 
+
         // Button Disable
         $(function() {
             $('#coin1').click(function() {
@@ -240,38 +241,63 @@
     </script>
     <title>ICE CREAM VENDING MACHINE</title>
 </head>
+<style>
+    body  {
+        background-image: url("pic/bg.jpg");
 
+    }
+    .itemInput{
+        text-align: center;
+    }
+    .container {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-around;
+        align-items: center;
+        display: flex;
+
+    }
+
+
+
+</style>
 <body>
-    <div class="grid-container">
-        <div id="TotalCoin" class="itemcoin"> TOTAL COIN : 
-            <div id="counter">0</div>
-        </div>
-        <div class="itemInput">
-            <button type="button" id="coin1" onclick="onBtnClick('coin')"></button>
-            <button type="button" id="coin2" onclick="onBtnClick('coin')"></button><br>
-            <button type="button" id="cone" onclick="onBtnClick('cone')"></button>
-            <button type="button" id="cup" onclick="onBtnClick('cup')"></button><br>
-            <button type="button" id="flavour1" onclick="onBtnClick('F1')"></button>
-            <button type="button" id="flavour2" onclick="onBtnClick('F2')"></button>
-            <button type="button" id="flavour3" onclick="onBtnClick('F3')"></button><br>
-            <button type="button" id="topping1" onclick="onBtnClick('T1')"></button>
-            <button type="button" id="topping2" onclick="onBtnClick('T2')"></button>
-            <button type="button" id="topping3" onclick="onBtnClick('T3')"></button><br>
-            <button type="button" id="reset" onclick="onBtnClick('take')"></button>
-        </div>
-        <img id="stateImg" src="stateImg/0.png" class="itemstate">
-        <!-- <div class="itemShow"> -->
-            <div class='itemShow'>
-                <img id='type' src='' class='disnone'>
-                <img id='outflavor1' src='' class='disnone'>
-                <img id='outflavor2' src='' class='disnone'>
-                <img id='outflavor3' src='' class='disnone'>
-                <img id='outtopping1' src='' class='disnone'>
-                <img id='outtopping2' src='' class='disnone'>
-            </div>
-        <!-- </div> -->
+    <div class="container">
 
-    </div>
+        <div class="itemInput">
+            <div style="position:relative;;display:block;margin-left: 450px;margin-top: 100px;">
+                <div class='itemShow'>
+                    <img id='type' src='' class='disnone'>
+                    <img id='outflavor1' src='' class='disnone'>
+                    <img id='outflavor2' src='' class='disnone'>
+                    <img id='outflavor3' src='' class='disnone'>
+                    <img id='outtopping1' src='' class='disnone'>
+                    <img id='outtopping2' src='' class='disnone'>
+                </div> 
+            </div>
+               
+            <img src="pic/mac.png" alt="" style="position:relative;height: 80%;">
+            <div class="btn" style="position:absolute;display:block;left: 9%;margin-top: -400px;">
+                <div id="counter">0</div>
+                <button type="button" id="coin1" onclick="onBtnClick('coin')"></button>
+                <button type="button" id="coin2" onclick="onBtnClick('coin')"></button><br>
+                <button type="button" id="cone" onclick="onBtnClick('cone')"></button>
+                <button type="button" id="cup" onclick="onBtnClick('cup')"></button><br>
+                <button type="button" id="flavour1" onclick="onBtnClick('F1')"></button>
+                <button type="button" id="flavour2" onclick="onBtnClick('F2')"></button>
+                <button type="button" id="flavour3" onclick="onBtnClick('F3')"></button><br>
+                <button type="button" id="topping1" onclick="onBtnClick('T1')"></button>
+                <button type="button" id="topping2" onclick="onBtnClick('T2')"></button>
+                <button type="button" id="topping3" onclick="onBtnClick('T3')"></button><br>
+                <button type="button" id="reset" onclick="onBtnClick('take')"></button>
+            </div>
+        </div>
+
+
+            <img id="stateImg" src="stateImg/0.png" class="itemstate">
+
+    </div>            
+
 </body>
 <script>
     $('#coin2').hide()
