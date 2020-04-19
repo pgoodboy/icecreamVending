@@ -244,10 +244,14 @@
 <style>
     body  {
         background-image: url("pic/bg.jpg");
-
     }
     .itemInput{
         text-align: center;
+        width: 800px;
+        height: 800px;
+        background-image: url("pic/mac.png");
+        background-repeat: no-repeat;
+        background-position: center; 
     }
     .container {
         flex-direction: row;
@@ -255,7 +259,6 @@
         justify-content: space-around;
         align-items: center;
         display: flex;
-
     }
 
 
@@ -265,7 +268,7 @@
     <div class="container">
 
         <div class="itemInput">
-            <div style="position:relative;;display:block;margin-left: 450px;margin-top: 100px;">
+            <!-- <div style="position:relative;;display:block;margin-left: 450px;margin-top: 100px;"> -->
                 <div class='itemShow'>
                     <img id='type' src='' class='disnone'>
                     <img id='outflavor1' src='' class='disnone'>
@@ -274,10 +277,10 @@
                     <img id='outtopping1' src='' class='disnone'>
                     <img id='outtopping2' src='' class='disnone'>
                 </div> 
-            </div>
+            <!-- </div> -->
                
-            <img src="pic/mac.png" alt="" style="position:relative;height: 80%;">
-            <div class="btn" style="position:absolute;display:block;left: 9%;margin-top: -400px;">
+            <!-- <img src="pic/mac.png" alt="" style="position:relative;height: 80%;"> -->
+            <div class="btn" > <!-- style="position:absolute;display:block;left: 9%;margin-top: -400px;" -->
                 <div id="counter">0</div>
                 <button type="button" id="coin1" onclick="onBtnClick('coin')"></button>
                 <button type="button" id="coin2" onclick="onBtnClick('coin')"></button><br>
