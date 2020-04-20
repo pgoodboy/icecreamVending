@@ -65,22 +65,27 @@ body {
     object-fit: contain;
 }
 
-#TotalCoin{
-    font-size: 30px;
-    position : relative;
-    top : 0px;
-    left : 0px;
-}
-
-#counter:before {
-    content:"Total Coin : ";
-}
-
 #counter{
-    font-size: 30px;
+    display: none;
+}
+
+.helperContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
-    top : -364px;
+    top : -375px;
     left : 0px;
+    height: 56px;
+}
+
+#helper {
+    font-size: 24px;
+}
+
+.buttonsContainer{
+    position: relative;
+    top : -23px;
 }
 
 #coin1 { 

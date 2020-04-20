@@ -4,9 +4,11 @@
     <link href="inputoutput.css" type="text/css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="script.js"></script>
+    <script src="help.js"></script>
     <title>ICE CREAM VENDING MACHINE</title>
 </head>
 <body>
+    </div>
     <div class="container">
         <div class="itemInput">
             <div class='itemShow'>
@@ -17,19 +19,22 @@
                 <img id='outtopping1' src='' class='disnone'>
                 <img id='outtopping2' src='' class='disnone'>
             </div> 
-            <div class="btn" >
+            <div>
                 <div id="counter">0</div>
-                <button type="button" id="coin1" onclick="onBtnClick('coin')"></button>
-                <button type="button" id="coin2" onclick="onBtnClick('coin')"></button><br>
-                <button type="button" id="cone" onclick="onBtnClick('cone')"></button>
-                <button type="button" id="cup" onclick="onBtnClick('cup')"></button><br>
-                <button type="button" id="flavour1" onclick="onBtnClick('F1')"></button>
-                <button type="button" id="flavour2" onclick="onBtnClick('F2')"></button>
-                <button type="button" id="flavour3" onclick="onBtnClick('F3')"></button><br>
-                <button type="button" id="topping1" onclick="onBtnClick('T1')"></button>
-                <button type="button" id="topping2" onclick="onBtnClick('T2')"></button>
-                <button type="button" id="topping3" onclick="onBtnClick('T3')"></button><br>
-                <button type="button" id="reset" onclick="onBtnClick('take')"></button>
+                <div class="helperContainer"><p id="helper">Insert Coin</p></div>
+                <div class="buttonsContainer">
+                    <button type="button" id="coin1" onclick="onBtnClick('coin')"></button>
+                    <button type="button" id="coin2" onclick="onBtnClick('coin')"></button><br>
+                    <button type="button" id="cone" onclick="onBtnClick('cone')"></button>
+                    <button type="button" id="cup" onclick="onBtnClick('cup')"></button><br>
+                    <button type="button" id="flavour1" onclick="onBtnClick('F1')"></button>
+                    <button type="button" id="flavour2" onclick="onBtnClick('F2')"></button>
+                    <button type="button" id="flavour3" onclick="onBtnClick('F3')"></button><br>
+                    <button type="button" id="topping1" onclick="onBtnClick('T1')"></button>
+                    <button type="button" id="topping2" onclick="onBtnClick('T2')"></button>
+                    <button type="button" id="topping3" onclick="onBtnClick('T3')"></button><br>
+                    <button type="button" id="reset" onclick="onBtnClick('take')"></button>
+                </div>
             </div>
         </div>
         <div>
