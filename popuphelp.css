@@ -57,5 +57,11 @@
     position: relative;
     top: 16px;
     right: 16px;
-    font-size: 60px;
+    background-color: pink;
+    background-image: url("pic/helpbtn.png"); 
+    background-size: cover; 
+    background-position: -10px 0px;
+    border-radius: 10px;
+    width: 190px;
+    height: 100px;
 }

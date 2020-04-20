@@ -78,7 +78,9 @@ body {
 }
 
 #helper {
-    font-size: 24px;
+    font-size: 20px;
+    font-family: "Consolas", Courier, monospace;
+    font-weight: bold;
     margin: 0px;
 }
 
