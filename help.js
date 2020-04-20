@@ -34,13 +34,13 @@ function changeHelp() {
             document.getElementById('helper').innerHTML = "Insert Coin"
             break;
         case 1:
-            document.getElementById('helper').innerHTML = "Select Container or<br>Insert More Coin (Coin:1)"
+            document.getElementById('helper').innerHTML = "Select Cup/Cone or<br>Insert More Coin (Coin:1)"
             break;
         case 2:
-            document.getElementById('helper').innerHTML = "Select Container or<br>Insert More Coin (Coin:2)"
+            document.getElementById('helper').innerHTML = "Select Cup/Cone or<br>Insert More Coin (Coin:2)"
             break;
         case 3:
-            document.getElementById('helper').innerHTML = "Select Container (Coin:3)"
+            document.getElementById('helper').innerHTML = "Select Cup/Cone (Coin:3)"
             break;
         case 4:
             document.getElementById('helper').innerHTML = "Select Flavor (Left:1)"
