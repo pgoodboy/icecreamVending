@@ -210,3 +210,8 @@ body {
 #reset:disabled {
     opacity: 0.5;
 }
+.NameId{
+    position : absolute;
+    bottom : -200px;
+    right : 0;
+}
