@@ -72,6 +72,10 @@ body {
     left : 0px;
 }
 
+#counter:before {
+    content:"Total Coin : ";
+}
+
 #counter{
     font-size: 30px;
     position: relative;
