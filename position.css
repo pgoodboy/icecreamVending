@@ -8,14 +8,12 @@
 }
 
 html {
+    background: url("pic/bg.jpg") no-repeat center center fixed;
+    background-size: cover;
     height: 100%;
 }
 
 body {
-    background-image: url("pic/bg.jpg");
-    background-color: #e69a8dff;
-    background-repeat: no-repeat;
-    background-size: cover;
     margin: 0px;
     height: 100%;
 }
@@ -75,17 +73,19 @@ body {
     align-items: center;
     position: relative;
     top : -375px;
-    left : 0px;
+    left : 6px;
     height: 56px;
 }
 
 #helper {
     font-size: 24px;
+    margin: 0px;
 }
 
 .buttonsContainer{
     position: relative;
     top : -23px;
+    left: 6px;
 }
 
 #coin1 { 
@@ -222,6 +222,7 @@ body {
 
 .NameId{
     position : absolute;
-    bottom : 0px;
+    top : 0px;
     right : 0px;
+    text-align: right;
 }

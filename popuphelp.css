@@ -10,28 +10,52 @@
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  }
-  
-  /* Modal Content/Box */
-  .modal-content {
-    background-color: #fefefe;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    position: relative;
+    background-color: #ffc5ee;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
-  }
-  
-  /* The Close Button */
-  .close {
+    width: 600px; /* Could be more or less, depending on screen size */
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+
+    /* style */
+    border-radius: 25px;
+    border: 2px solid rgb(255, 129, 192);
+    padding: 20px;
+}
+
+/* The Close Button */
+.close {
+    border-radius: 10px;
     color: #aaa;
     float: right;
-    font-size: 28px;
+    font-size: 36px;
     font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
+    position: relative;
+    top: -12px;
+}
+
+.close:hover,
+.close:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
-  }
+}
+
+/* Add Animation */
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+}
+
+#myBtn {
+    position: relative;
+    top: 16px;
+    right: 16px;
+    font-size: 60px;
+}
