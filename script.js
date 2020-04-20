@@ -39,6 +39,7 @@ var currentState = 0;
 function onBtnClick(i) 
 {
     transition(i)
+    changeHelp()
 }
 function transition(input){
     for(let x of transitionList){

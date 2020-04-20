@@ -8,14 +8,12 @@
 }
 
 html {
+    background: url("pic/bg.jpg") no-repeat center center fixed;
+    background-size: cover;
     height: 100%;
 }
 
 body {
-    background-image: url("pic/bg.jpg");
-    background-color: #e69a8dff;
-    background-repeat: no-repeat;
-    background-size: cover;
     margin: 0px;
     height: 100%;
 }
@@ -65,18 +63,31 @@ body {
     object-fit: contain;
 }
 
-#TotalCoin{
-    font-size: 30px;
-    position : relative;
-    top : 0px;
-    left : 0px;
+#counter{
+    display: none;
 }
 
-#counter{
-    font-size: 30px;
+.helperContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
-    top : -364px;
-    left : 0px;
+    top : -375px;
+    left : 6px;
+    height: 56px;
+}
+
+#helper {
+    font-size: 20px;
+    font-family: "Consolas", Courier, monospace;
+    font-weight: bold;
+    margin: 0px;
+}
+
+.buttonsContainer{
+    position: relative;
+    top : -23px;
+    left: 6px;
 }
 
 #coin1 { 
@@ -209,4 +220,11 @@ body {
 
 #reset:disabled {
     opacity: 0.5;
+}
+
+.NameId{
+    position : absolute;
+    top : 0px;
+    right : 0px;
+    text-align: right;
 }
